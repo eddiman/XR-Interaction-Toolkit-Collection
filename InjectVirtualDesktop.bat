@@ -1,0 +1,1 @@
+c:\Program Files\Virtual Desktop Streamer>VirtualDesktop.Streamer.exe "C:\Program Files\Unity\Hub\Editor\2020.1.3f1\Editor\Unity.exe" -projectpath "S:\UnityProjects\VRToolkitUnity"
