@@ -1,2 +1,2 @@
 # XR-Interaction-Toolkit-Collection
-XR Interaction ToolkitCollection
+A small collection of prefabs and objects to bootstrap XR development. Includes VR Rig with teleportation, continuous movement and climbing, and other interactables, such as working guns.
