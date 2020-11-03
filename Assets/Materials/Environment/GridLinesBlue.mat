@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GridLinesBlue
-  m_Shader: {fileID: -6465566751694194690, guid: d0fb2fe7211f82e48ab242fef2fbe5d5, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 7988eb32e73cc7c47b2826ee37544f75, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -43,19 +43,31 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_39F5103E_Texture_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_16F3726E: 0
     - Boolean_63BDB4: 1
+    - Boolean_913F2305: 1
     - Boolean_B8352D86: 0
+    - Boolean_F97F913B: 0
+    - Vector1_3650684D: 5.5
+    - Vector1_4682A345: 0.9
+    - Vector1_7BB9AC69: 0.04
     - Vector1_B340B751: 0.909
+    - Vector1_C2C7F796: 1000
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DissolveValue: 0
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -73,7 +85,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_2371483C: {r: 0, g: 1.7803922, b: 2, a: 0}
     - Color_C8EFB4B9: {r: 0, g: 2.6352942, b: 2.6352942, a: 1}
+    - Color_D912A8F4: {r: 0, g: 31.905771, b: 56.425945, a: 0}
+    - Vector2_47B3E2D: {r: 0.2, g: 0.2, b: 0, a: 0}
     - Vector2_F105CF84: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

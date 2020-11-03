@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
-  bullet: {fileID: 0}
+  bullet: {fileID: 6063281348769573874, guid: a65a699804798634a897ffb36817fb21, type: 3}
   barrel: {fileID: 6148876465036716411}
   audioSource: {fileID: 6148876465678985668}
   audioClip: {fileID: 8300000, guid: 906e5a494e346b045971944191570a41, type: 3}

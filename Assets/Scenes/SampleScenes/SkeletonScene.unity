@@ -5963,10 +5963,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Two-Handed Gun
       objectReference: {fileID: 0}
-    - target: {fileID: 6148876466266166757, guid: dd39e52600e4a494389e15304dcfe96b, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6148876466266166759, guid: dd39e52600e4a494389e15304dcfe96b, type: 3}
       propertyPath: m_InteractionManager
       value: 

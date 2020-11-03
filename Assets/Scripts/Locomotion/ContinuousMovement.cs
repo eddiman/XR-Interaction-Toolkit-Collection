@@ -41,7 +41,7 @@ public class ContinuousMovement : MonoBehaviour
         Vector3 direction = headYaw * new Vector3(_inputAxis.x, 0, _inputAxis.y);
         if (enableContinuousMovement)
         {
-            _character.Move(direction * Time.deltaTime * 1);
+            _character.Move(direction * Time.deltaTime * speed);
         }
 
         //Gravity
