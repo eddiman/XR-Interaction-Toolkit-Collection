@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LerpShaderValue : MonoBehaviour
 {
     public string ShaderValueName;
     public float lerpDuration = 3;
     public float lerpDelay = .5f;
+    public float StartValue = 0;
     public float lerpInStartValue = 0;
     public float lerpInEndValue = 1;
     public float lerpOutStartValue = 1;
     public float lerpOutEndValue = 0;
+    public bool activateEvent;
+    public bool activateOnEnable = true;
+
+    public UnityEvent LerpEnd;
 
     float valueToLerp;
     private Renderer meshRenderer;
@@ -19,15 +23,17 @@ public class LerpShaderValue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!activateOnEnable) return;
         meshRenderer = GetComponent<Renderer> ();
-        meshRenderer.material.SetFloat(ShaderValueName, 1);
+        meshRenderer.material.SetFloat(ShaderValueName, StartValue);
         LerpOut();
     }
-  void OnEnable()
+    void OnEnable()
     {
+        if (!activateOnEnable) return;
         try
         {
-            meshRenderer.material.SetFloat(ShaderValueName, 1);
+            meshRenderer.material.SetFloat(ShaderValueName, StartValue);
 
         }
         catch
@@ -40,14 +46,14 @@ public class LerpShaderValue : MonoBehaviour
     }
     public void LerpIn()
     {
-        StartCoroutine(Lerp(lerpDelay, lerpInStartValue, lerpInEndValue));
+        StartCoroutine(Lerp(lerpDelay, lerpInStartValue, lerpInEndValue, activateEvent));
     }
     public void LerpOut()
     {
-        StartCoroutine(Lerp(lerpDelay, lerpOutStartValue, lerpOutEndValue));
+        StartCoroutine(Lerp(lerpDelay, lerpOutStartValue, lerpOutEndValue, activateEvent));
     }
 
-    IEnumerator Lerp(float delay, float startValue, float endValue)
+    IEnumerator Lerp(float delay, float startValue, float endValue, bool activateEvent)
     {
         float timeElapsed = 0;
         yield return new WaitForSeconds(delay);
@@ -58,6 +64,11 @@ public class LerpShaderValue : MonoBehaviour
             timeElapsed += Time.deltaTime;
             meshRenderer.material.SetFloat(ShaderValueName, valueToLerp);
             yield return null;
+        }
+
+        if (activateEvent)
+        {
+            LerpEnd.Invoke();
         }
 
         valueToLerp = endValue;

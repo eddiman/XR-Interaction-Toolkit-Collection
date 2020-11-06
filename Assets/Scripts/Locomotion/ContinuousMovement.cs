@@ -12,7 +12,8 @@ public class ContinuousMovement : MonoBehaviour
     public LayerMask groundLayer;
     public float additionalHeight = 0.2f; //20cm
     public bool enableContinuousMovement = true;
-
+    [SerializeField]
+    private bool isGrounded = true;
     private Vector2 _inputAxis;
     private float _fallingSpeed;
     private XRRig _rig;
@@ -24,6 +25,7 @@ public class ContinuousMovement : MonoBehaviour
     {
         _character = GetComponent<CharacterController>();
         _rig = GetComponent<XRRig>();
+        isGrounded = CheckIfGrounded();
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class ContinuousMovement : MonoBehaviour
         }
 
         //Gravity
-        bool isGrounded = CheckIfGrounded();
+        isGrounded = CheckIfGrounded();
         if (isGrounded)
         {
             _fallingSpeed = 0;
