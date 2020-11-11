@@ -83,7 +83,7 @@ Material:
     m_Colors:
     - Color_2371483C: {r: 1.1162225, g: 0, b: 3.675836, a: 0}
     - Color_C8EFB4B9: {r: 1.1002203, g: 0, b: 3.6758354, a: 1}
-    - Color_D912A8F4: {r: 10.3243475, g: 0, b: 33.999146, a: 0}
+    - Color_D912A8F4: {r: 1.0524956, g: 0.4488394, b: 2.4398446, a: 0}
     - Vector2_47B3E2D: {r: 9, g: 6, b: 0, a: 0}
     - Vector2_F105CF84: {r: 9, g: 6, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
