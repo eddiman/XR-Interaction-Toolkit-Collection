@@ -23,8 +23,8 @@ public class LerpShaderValue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!activateOnEnable) return;
         meshRenderer = GetComponent<Renderer> ();
+        if (!activateOnEnable) return;
         meshRenderer.material.SetFloat(ShaderValueName, StartValue);
         LerpOut();
     }
@@ -46,10 +46,12 @@ public class LerpShaderValue : MonoBehaviour
     }
     public void LerpIn()
     {
+        if(!isActiveAndEnabled) return;
         StartCoroutine(Lerp(lerpDelay, lerpInStartValue, lerpInEndValue, activateEvent));
     }
     public void LerpOut()
     {
+        if(!isActiveAndEnabled) return;
         StartCoroutine(Lerp(lerpDelay, lerpOutStartValue, lerpOutEndValue, activateEvent));
     }
 

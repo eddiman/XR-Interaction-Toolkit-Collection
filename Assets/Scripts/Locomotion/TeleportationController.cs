@@ -10,6 +10,8 @@ public class TeleportationController : MonoBehaviour
     public XRRayInteractor rightInteractorRay;
 
     public bool EnableTeleport = true;
+    public bool EnableTeleportLeftHand = true;
+    public bool EnableTeleportRightHand = true;
 
     //These are used in the XR Direct Interactor in "Show Interactor Events" of the Right/Left hand
     //They are used to deactivate the teleporter when something is grabbed
@@ -42,15 +44,16 @@ public class TeleportationController : MonoBehaviour
         {
             bool isLeftInteractorRayHovering =
                 leftInteractorRay.TryGetHitInfo(ref pos, ref norm, ref index, ref validTarget);
-            _leftTeleportRayInteractor.allowSelect = CheckIfActivated(LeftTeleportRayXRController) && !isLeftInteractorRayHovering && EnableTeleport;
-            LeftTeleportRayXRController.gameObject.SetActive(EnableLeftTeleport && CheckIfActivated(LeftTeleportRayXRController) && !isLeftInteractorRayHovering && EnableTeleport);
+
+            _leftTeleportRayInteractor.allowSelect = CheckIfActivated(LeftTeleportRayXRController) && !isLeftInteractorRayHovering && EnableTeleport && EnableTeleportLeftHand;
+            LeftTeleportRayXRController.gameObject.SetActive(EnableLeftTeleport && CheckIfActivated(LeftTeleportRayXRController) && !isLeftInteractorRayHovering && EnableTeleport && EnableTeleportLeftHand);
         }
         if (RightTeleportRayXRController)
         {
             bool isRightInteractorRayHovering =
                 rightInteractorRay.TryGetHitInfo(ref pos, ref norm, ref index, ref validTarget);
-            _rightTeleportRayInteractor.allowSelect = CheckIfActivated(RightTeleportRayXRController) && !isRightInteractorRayHovering && EnableTeleport;
-            RightTeleportRayXRController.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(RightTeleportRayXRController) && !isRightInteractorRayHovering && EnableTeleport);
+            _rightTeleportRayInteractor.allowSelect = CheckIfActivated(RightTeleportRayXRController) && !isRightInteractorRayHovering && EnableTeleport && EnableTeleportRightHand;
+            RightTeleportRayXRController.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(RightTeleportRayXRController) && !isRightInteractorRayHovering && EnableTeleport && EnableTeleportRightHand);
         }
 
         if (!EnableTeleport && _leftTeleportRayInteractor.gameObject.activeSelf && _rightTeleportRayInteractor.gameObject.activeSelf)

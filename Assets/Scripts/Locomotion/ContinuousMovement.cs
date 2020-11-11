@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -12,8 +13,14 @@ public class ContinuousMovement : MonoBehaviour
     public LayerMask groundLayer;
     public float additionalHeight = 0.2f; //20cm
     public bool enableContinuousMovement = true;
-    [SerializeField]
-    private bool isGrounded = true;
+
+    public UnityEvent StartedMoving;
+    public UnityEvent StoppedMoving;
+
+    private bool _isGrounded = true;
+    private bool _isMoving = false;
+
+
     private Vector2 _inputAxis;
     private float _fallingSpeed;
     private XRRig _rig;
@@ -25,7 +32,7 @@ public class ContinuousMovement : MonoBehaviour
     {
         _character = GetComponent<CharacterController>();
         _rig = GetComponent<XRRig>();
-        isGrounded = CheckIfGrounded();
+        _isGrounded = CheckIfGrounded();
     }
 
     // Update is called once per frame
@@ -44,11 +51,22 @@ public class ContinuousMovement : MonoBehaviour
         if (enableContinuousMovement)
         {
             _character.Move(direction * Time.deltaTime * speed);
+
+            //TODO: Fix floating comparison, works on Oculus Touch, but other controller might be more floaty with its input values, just remember to check for positive AND negative values
+            if(_inputAxis.x != 0 && _inputAxis.y != 0 && _isMoving == false)
+            {
+                _isMoving = true;
+                StartedMoving.Invoke();
+            } else if (_inputAxis.x == 0 && _inputAxis.y == 0 && _isMoving)
+            {
+                _isMoving = false;
+                StoppedMoving.Invoke();
+            }
         }
 
         //Gravity
-        isGrounded = CheckIfGrounded();
-        if (isGrounded)
+        _isGrounded = CheckIfGrounded();
+        if (_isGrounded)
         {
             _fallingSpeed = 0;
         }
