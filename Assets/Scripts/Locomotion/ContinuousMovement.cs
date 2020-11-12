@@ -54,7 +54,7 @@ public class ContinuousMovement : MonoBehaviour
             _character.Move(direction * Time.deltaTime * speed);
 
             //TODO: Fix floating comparison, works on Oculus Touch, but other controller might be more floaty with its input values, just remember to check for positive AND negative values
-            if(Math.Abs(_inputAxis.x) > 0.1f && Math.Abs(_inputAxis.y) > 0.1f && _isMoving == false)
+            if(Math.Abs(_inputAxis.x) > 0.1f && Math.Abs(_inputAxis.y) > 0.1f && Math.Abs(_inputAxis.x) < -0.1f && Math.Abs(_inputAxis.y) < -0.1f &&_isMoving == false)
             {
                 _isMoving = true;
                 StartedMoving.Invoke();

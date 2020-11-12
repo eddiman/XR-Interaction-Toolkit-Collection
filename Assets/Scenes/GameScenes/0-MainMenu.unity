@@ -10040,6 +10040,14 @@ PrefabInstance:
       propertyPath: m_CameraType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4419272009543591555, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
+      propertyPath: m_Antialiasing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419272009543591555, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5115423019050762433, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -10874,7 +10882,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732523973}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 

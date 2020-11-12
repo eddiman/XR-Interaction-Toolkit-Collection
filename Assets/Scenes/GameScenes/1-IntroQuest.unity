@@ -4654,6 +4654,38 @@ PrefabInstance:
       propertyPath: m_UIPressUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 622722301, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
+      propertyPath: m_LineWidth
+      value: 0.0075
+      objectReference: {fileID: 0}
+    - target: {fileID: 622722301, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
+      propertyPath: m_WidthCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 622722302, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.0075
+      objectReference: {fileID: 0}
+    - target: {fileID: 622722302, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 747662461, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
+      propertyPath: m_LineWidth
+      value: 0.0075
+      objectReference: {fileID: 0}
+    - target: {fileID: 747662461, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
+      propertyPath: m_WidthCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 747662462, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.0075
+      objectReference: {fileID: 0}
+    - target: {fileID: 747662462, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1532412299, guid: 8c406c0f8c04f86448cd8db2d30004de, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
