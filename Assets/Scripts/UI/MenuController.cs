@@ -34,8 +34,8 @@ public class MenuController : MonoBehaviour
 
     private void setToggles()
     {
-        _teleportToggle.isOn = Rig.GetComponent<RigSettingsFacade>().CanTeleport;
-        _contMovementToggle.isOn = Rig.GetComponent<RigSettingsFacade>().CanMoveContinuously;
+        _teleportToggle.isOn = Rig.GetComponent<TeleportationController>().EnableTeleport;
+        _contMovementToggle.isOn = Rig.GetComponent<ContinuousMovement>().enableContinuousMovement;
     }
     public void toggleMenu()
     {

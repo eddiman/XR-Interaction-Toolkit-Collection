@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -53,11 +54,11 @@ public class ContinuousMovement : MonoBehaviour
             _character.Move(direction * Time.deltaTime * speed);
 
             //TODO: Fix floating comparison, works on Oculus Touch, but other controller might be more floaty with its input values, just remember to check for positive AND negative values
-            if(_inputAxis.x != 0 && _inputAxis.y != 0 && _isMoving == false)
+            if(Math.Abs(_inputAxis.x) > 0.1f && Math.Abs(_inputAxis.y) > 0.1f && _isMoving == false)
             {
                 _isMoving = true;
                 StartedMoving.Invoke();
-            } else if (_inputAxis.x == 0 && _inputAxis.y == 0 && _isMoving)
+            } else if (Math.Abs(_inputAxis.x) < 0.1f && Math.Abs(_inputAxis.y) < 0.1f && _isMoving)
             {
                 _isMoving = false;
                 StoppedMoving.Invoke();

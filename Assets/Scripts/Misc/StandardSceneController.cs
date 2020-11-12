@@ -11,15 +11,10 @@ public class StandardSceneController : MonoBehaviour
     // Start is called before the first frame
     void Start()
     {
+        //Shader.SetGlobalVector("_SunDirection", MainLight.forward);
 
     }
     // Update is called once per frame
-    void Update()
-    {
-        Shader.SetGlobalVector("_SunDirection", MainLight.forward);
-
-    }
-
     public void setSceneIndex(int index)
     {
         sceneIndexToLoad = index;
