@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0.57
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.12860449, g: 0.26033714, b: 0.3207547, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 06407f6d12303d14c97d1a44c2f67fc5, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 4524ebaa1c3a712489206b833d8e1115, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 38ba0d14c1e794341aec541ed6c07f7a, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -376,7 +376,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292187454}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -424,13 +424,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292187454}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.15446474, w: 0.98799837}
   m_LocalPosition: {x: -5.63, y: 2.15, z: -1.9212095}
   m_LocalScale: {x: 2.8402, y: 2.8402, z: 2.8402}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 17.772}
 --- !u!1 &373255718
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,6 +930,10 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2f1928108e3f5284988b6ff559afff16, type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2f1928108e3f5284988b6ff559afff16, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2f1928108e3f5284988b6ff559afff16, type: 3}
       propertyPath: m_Name
@@ -1743,7 +1747,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348305280}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -5205,6 +5209,10 @@ PrefabInstance:
     - target: {fileID: 4636781295468965389, guid: 2ce9b9ee103ec68408a7622f1ab67cd4, type: 3}
       propertyPath: m_Name
       value: Custom Event Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636781297222639420, guid: 2ce9b9ee103ec68408a7622f1ab67cd4, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ce9b9ee103ec68408a7622f1ab67cd4, type: 3}
