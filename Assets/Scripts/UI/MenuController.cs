@@ -30,6 +30,7 @@ public class MenuController : MonoBehaviour
     void Start()
     {
 
+        DisableMenu();
     }
 
     private void setToggles()
@@ -41,6 +42,7 @@ public class MenuController : MonoBehaviour
     {
         if (isMenuOpen)
         {
+            //Menu has to be enabled in editor, this closes the menu when scene starts
             DisableMenu();
         }
         else

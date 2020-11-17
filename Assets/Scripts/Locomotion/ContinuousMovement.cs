@@ -15,6 +15,9 @@ public class ContinuousMovement : MonoBehaviour
     public float additionalHeight = 0.2f; //20cm
     public bool enableContinuousMovement = true;
 
+        public float FOVRestrictorThreshold = 0.1f; //How much of the stick before the fov restrictor is activated
+
+
     public UnityEvent StartedMoving;
     public UnityEvent StoppedMoving;
 
@@ -36,7 +39,7 @@ public class ContinuousMovement : MonoBehaviour
         _isGrounded = CheckIfGrounded();
     }
 
-    // Update is called once per frame
+    // Update is called once per framemenu
     void Update()
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(InputSource);
@@ -52,13 +55,20 @@ public class ContinuousMovement : MonoBehaviour
         if (enableContinuousMovement)
         {
             _character.Move(direction * Time.deltaTime * speed);
-
+            Debug.Log("X " + _inputAxis.x);
+            Debug.Log("Y " + _inputAxis.y);
             //TODO: Fix floating comparison, works on Oculus Touch, but other controller might be more floaty with its input values, just remember to check for positive AND negative values
-            if(Math.Abs(_inputAxis.x) > 0.1f && Math.Abs(_inputAxis.y) > 0.1f && Math.Abs(_inputAxis.x) < -0.1f && Math.Abs(_inputAxis.y) < -0.1f &&_isMoving == false)
+            if(Math.Abs(_inputAxis.y) > FOVRestrictorThreshold && _isMoving == false)
             {
                 _isMoving = true;
                 StartedMoving.Invoke();
-            } else if (Math.Abs(_inputAxis.x) < 0.1f && Math.Abs(_inputAxis.y) < 0.1f && _isMoving)
+            } else if(Math.Abs(_inputAxis.x) > FOVRestrictorThreshold && _isMoving == false)
+            {
+                _isMoving = true;
+                StartedMoving.Invoke();
+            } else if (Math.Abs(_inputAxis.x) < FOVRestrictorThreshold
+                && Math.Abs(_inputAxis.y) < FOVRestrictorThreshold
+                && _isMoving)
             {
                 _isMoving = false;
                 StoppedMoving.Invoke();
