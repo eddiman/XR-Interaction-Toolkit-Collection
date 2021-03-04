@@ -13,10 +13,11 @@ namespace Assets.Scripts
         private ContinuousMovement _continuousMovement;
         private TeleportationController _teleportationController;
         private Climber _climber;
+        private SnapTurnController _snapTurnController;
         [ReadOnly]
         [Tooltip("This script is supposed to give you all the functions for using with events. " +
-                "Also, it allows you to control certain functions of the VR Rig. " +
-                "Use the buttons for disabling and enabling key functions")]
+                 "Also, it allows you to control certain functions of the VR Rig. " +
+                 "Use the buttons for disabling and enabling key functions")]
         public string HoverThisToSeeEntireTextUnderneath = "";
         [Header("This script is supposed to give you all the functions for using with events. " +
                 "Also, it allows you to control certain functions of the VR Rig. " +
@@ -38,21 +39,23 @@ namespace Assets.Scripts
         [HideInInspector]
         [SerializeField]
         private bool _enableRayForUiOnly;
+        [HideInInspector]
+        [SerializeField]
+        private bool _canSnapTurn;
 
-        void Start()
+        void Awake()
         {
             _continuousMovement = GetComponent<ContinuousMovement>();
             _teleportationController = GetComponent<TeleportationController>();
             _climber = GetComponent<Climber>();
-
-            /*_canMoveContinuously = _continuousMovement.enableContinuousMovement;
-            _canClimb = _climber.EnableClimbing;
-            _canTeleport = _teleportationController.EnableTeleport;*/
+            _snapTurnController = GetComponent<SnapTurnController>();
 
             _continuousMovement.enableContinuousMovement = _canMoveContinuously;
             _climber.EnableClimbing = _canClimb;
             _teleportationController.EnableTeleport = _canTeleport;
             EnableRayForUiOnly = _enableRayForUiOnly;
+            _snapTurnController.SnapTurnIsOn = _canSnapTurn;
+
 
 
         }
@@ -140,6 +143,24 @@ namespace Assets.Scripts
             }
         }
 
+        public bool CanSnapTurn
+        {
+            get { return _canSnapTurn; }
+            set
+            {
+                _canSnapTurn = value;
+                try
+                {
+                    _snapTurnController.SetSnapTurnActivation(_canSnapTurn);
+                }
+                catch
+                {
+                    Debug.Log("Oak's words echoed... 'Remember, this does not affect the value in the editor, only runtime'");
+
+                }
+            }
+        }
+
 
     }
 
@@ -185,6 +206,12 @@ namespace Assets.Scripts
             if(GUILayout.Button(btnText("Interactor for only UI ", script.EnableRayForUiOnly, enableRayForUiOnlyTarget)))
             {
                 script.EnableRayForUiOnly = enableRayForUiOnlyTarget;
+            }
+            bool snapTurnRotateTarget = !script.CanSnapTurn;
+            GUI.backgroundColor = (snapTurnRotateTarget) ? Color.red : Color.green;
+            if(GUILayout.Button(btnText("Snap turn ", script.CanSnapTurn, snapTurnRotateTarget)))
+            {
+                script.CanSnapTurn = snapTurnRotateTarget;
             }
 
             EditorUtility.SetDirty(script);

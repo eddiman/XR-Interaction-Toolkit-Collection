@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AudioScaler : MonoBehaviour
 {
     public AudioSource audio;
+    public Transform transformToScale;
     public float _volume = 2;
+    public UnityEvent SoundEnded;
 
     [SerializeField] private bool _isClipPlaying;
 
@@ -22,10 +25,13 @@ public class AudioScaler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _samples = new float[_qSamples];
-        _initScale = transform.localScale;
-        _isClipPlaying = true;
+        InitClip();
     }
+
+    public void InitClip() {
+        _samples = new float[_qSamples];
+        _initScale = transformToScale.localScale;
+        _isClipPlaying = audio.isPlaying;}
 
     private void GetVolume()
     {
@@ -37,7 +43,6 @@ public class AudioScaler : MonoBehaviour
         _rmsValue = Mathf.Sqrt(sum/_qSamples); // rms = square root of average
         _dbValue = 20*Mathf.Log10(_rmsValue/_refValue); // calculate dB
         if (_dbValue < -160) _dbValue = -160; // clamp it to -160dB min
-        Debug.Log(_dbValue);
     }
     // Update is called once per frame
     void Update()
@@ -46,11 +51,15 @@ public class AudioScaler : MonoBehaviour
         {
             _isClipPlaying = true;
             GetVolume();
-
-
-            transform.localScale = Vector3.Lerp(_initScale, _newScale, Time.deltaTime * 2f );
+            transformToScale.localScale = Vector3.Lerp(_initScale, _newScale, Time.deltaTime * 2f );
             _newScale = new Vector3((_volume * _rmsValue), (_volume * _rmsValue), _volume * _rmsValue );
         }
+        else if (!audio.isPlaying && _isClipPlaying)
+        {
+            _isClipPlaying = false;
+            SoundEnded.Invoke();
+        }
+
 
     }
 }

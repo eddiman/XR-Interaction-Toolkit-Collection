@@ -1046,7 +1046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5575349897003139700, guid: d135df638d2b6dd4e95ff5a0c26ce1ea, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5575349898011492040, guid: d135df638d2b6dd4e95ff5a0c26ce1ea, type: 3}
       propertyPath: m_Colliders.Array.data[0]
@@ -1064,13 +1064,17 @@ PrefabInstance:
       propertyPath: m_SmoothPosition
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5575349898011492040, guid: d135df638d2b6dd4e95ff5a0c26ce1ea, type: 3}
+      propertyPath: m_InteractionLayerMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 5575349898011492041, guid: d135df638d2b6dd4e95ff5a0c26ce1ea, type: 3}
       propertyPath: m_Name
       value: VRHeadset
       objectReference: {fileID: 0}
     - target: {fileID: 5575349898011492041, guid: d135df638d2b6dd4e95ff5a0c26ce1ea, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5575349898011492042, guid: d135df638d2b6dd4e95ff5a0c26ce1ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1118,7 +1122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5575349898193031506, guid: d135df638d2b6dd4e95ff5a0c26ce1ea, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d135df638d2b6dd4e95ff5a0c26ce1ea, type: 3}
@@ -1138,7 +1142,7 @@ GameObject:
   - component: {fileID: 465705892}
   - component: {fileID: 465705894}
   - component: {fileID: 465705893}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LoadingTextInVR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1742,10 +1746,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60523e0647cc6ab43acc73cb266a32a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
+  m_InteractionManager: {fileID: 1003012052}
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4096
   m_AttachTransform: {fileID: 683002791}
   m_StartingSelectedInteractable: {fileID: 0}
   m_OnHoverEnter:
@@ -2786,7 +2790,7 @@ GameObject:
   - component: {fileID: 1004730615}
   - component: {fileID: 1004730617}
   - component: {fileID: 1004730616}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: OutlineRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8190,6 +8194,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5070902661859270212, guid: 7fe9b641c2d90e143826d06ac52e067d, type: 3}
+      propertyPath: sceneIndexToLoad
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7143539092405792291, guid: 7fe9b641c2d90e143826d06ac52e067d, type: 3}
       propertyPath: m_Name
       value: SceneController
@@ -8214,6 +8222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitSeconds: 3
+  runOnStart: 0
+  AudioScalerForSoundEnd: {fileID: 0}
   onTimerStart:
     m_PersistentCalls:
       m_Calls: []
@@ -9371,7 +9381,7 @@ GameObject:
   - component: {fileID: 1338110547}
   - component: {fileID: 1338110546}
   - component: {fileID: 1338110550}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: StartCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10691,7 +10701,7 @@ GameObject:
   - component: {fileID: 1634417189}
   - component: {fileID: 1634417191}
   - component: {fileID: 1634417190}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: VrHeadset.screen.waitingScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11672,7 +11682,7 @@ GameObject:
   - component: {fileID: 1981651175}
   - component: {fileID: 1981651177}
   - component: {fileID: 1981651176}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: VrHeadset.screen.GameScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11755,7 +11765,7 @@ GameObject:
   - component: {fileID: 2016621062}
   - component: {fileID: 2016621061}
   - component: {fileID: 2016621060}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: VrHeadset.band
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -23,6 +23,7 @@ public class MenuController : MonoBehaviour
     [Header("Toggle Group")]
     [SerializeField] Toggle _teleportToggle;
     [SerializeField] Toggle _contMovementToggle;
+    [SerializeField] Toggle _snapTurnToggle;
     private LocomotionSystem _locomotion;
 
     // Start is called before the first frame update
@@ -31,12 +32,14 @@ public class MenuController : MonoBehaviour
     {
 
         DisableMenu();
+        setToggles();
     }
 
     private void setToggles()
     {
-        _teleportToggle.isOn = Rig.GetComponent<TeleportationController>().EnableTeleport;
-        _contMovementToggle.isOn = Rig.GetComponent<ContinuousMovement>().enableContinuousMovement;
+        _teleportToggle.SetIsOnWithoutNotify(Rig.GetComponent<TeleportationController>().EnableTeleport);
+        _contMovementToggle.SetIsOnWithoutNotify(Rig.GetComponent<ContinuousMovement>().enableContinuousMovement);
+        _snapTurnToggle.SetIsOnWithoutNotify(Rig.GetComponent<SnapTurnController>().SnapTurnIsOn);
     }
     public void toggleMenu()
     {

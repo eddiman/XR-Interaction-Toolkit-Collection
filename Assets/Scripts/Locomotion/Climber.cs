@@ -32,7 +32,7 @@ public class Climber : MonoBehaviour
 
     }
 
-        public bool SetClimbingActivation(bool value)
+    public bool SetClimbingActivation(bool value)
     {
         EnableClimbing = value;
         return EnableClimbing;

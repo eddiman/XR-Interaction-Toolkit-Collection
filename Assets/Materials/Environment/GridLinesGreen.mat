@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: d0fb2fe7211f82e48ab242fef2fbe5d5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -50,7 +50,7 @@ Material:
     m_Floats:
     - Boolean_63BDB4: 0
     - Boolean_B8352D86: 0
-    - Vector1_B340B751: 0.948
+    - Vector1_B340B751: 0.786
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

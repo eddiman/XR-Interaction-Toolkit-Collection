@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR;
@@ -55,9 +56,6 @@ public class ContinuousMovement : MonoBehaviour
         if (enableContinuousMovement)
         {
             _character.Move(direction * Time.deltaTime * speed);
-            Debug.Log("X " + _inputAxis.x);
-            Debug.Log("Y " + _inputAxis.y);
-            //TODO: Fix floating comparison, works on Oculus Touch, but other controller might be more floaty with its input values, just remember to check for positive AND negative values
             if(Math.Abs(_inputAxis.y) > FOVRestrictorThreshold && _isMoving == false)
             {
                 _isMoving = true;
