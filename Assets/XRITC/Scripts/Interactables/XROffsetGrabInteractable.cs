@@ -21,7 +21,7 @@ public class XROffsetGrabInteractable : XRGrabInteractable
         _initialAttachLocalPos = attachTransform.localPosition;
         _initialAttachLocalRot = attachTransform.localRotation;
     }
-    protected override void OnSelectEnter(XRBaseInteractor interactor)
+    protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
         if (interactor is XRDirectInteractor)
         {
@@ -33,6 +33,6 @@ public class XROffsetGrabInteractable : XRGrabInteractable
             attachTransform.localPosition = _initialAttachLocalPos;
             attachTransform.localRotation = _initialAttachLocalRot;
         }
-        base.OnSelectEnter(interactor);
+        base.OnSelectEntered(interactor);
     }
 }

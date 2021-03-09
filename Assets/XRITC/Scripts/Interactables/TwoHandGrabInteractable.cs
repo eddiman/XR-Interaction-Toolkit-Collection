@@ -26,8 +26,8 @@ public class TwoHandGrabInteractable : XRGrabInteractable
 
         foreach (var item in secondHandGrabPoints)
         {
-            item.onSelectEnter.AddListener(OnSecondHandGrab);
-            item.onSelectExit.AddListener(OnSecondHandRelease);
+            item.onSelectEntered.AddListener(OnSecondHandGrab);
+            item.onSelectExited.AddListener(OnSecondHandRelease);
         }
     }
 
@@ -88,16 +88,16 @@ public class TwoHandGrabInteractable : XRGrabInteractable
 
     }
 
-    protected override void OnSelectEnter(XRBaseInteractor interactor)
+    protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
 
-        base.OnSelectEnter(interactor);
+        base.OnSelectEntered(interactor);
         _attachInitialRotation = interactor.attachTransform.localRotation;
     }
 
-    protected override void OnSelectExit(XRBaseInteractor interactor)
+    protected override void OnSelectExited(XRBaseInteractor interactor)
     {
-        base.OnSelectExit(interactor);
+        base.OnSelectExited(interactor);
         _secondInteractor = null;
         interactor.attachTransform.localRotation = _attachInitialRotation;
 

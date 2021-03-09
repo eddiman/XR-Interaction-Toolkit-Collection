@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class SnapTurnController : MonoBehaviour
 {
-    public SnapTurnProvider snapTurnProvider;
+    public DeviceBasedSnapTurnProvider snapTurnProvider;
 
     public bool SnapTurnIsOn = true;
     [Tooltip("The higher this is the faster it rotates")]

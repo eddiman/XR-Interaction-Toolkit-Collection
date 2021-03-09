@@ -43,7 +43,7 @@ public class TeleportationController : MonoBehaviour
         if (LeftTeleportRayXRController)
         {
             bool isLeftInteractorRayHovering =
-                leftInteractorRay.TryGetHitInfo(ref pos, ref norm, ref index, ref validTarget);
+                leftInteractorRay.TryGetHitInfo(out pos, out norm, out index, out validTarget);
 
             _leftTeleportRayInteractor.allowSelect = CheckIfActivated(LeftTeleportRayXRController) && !isLeftInteractorRayHovering && EnableTeleport && EnableTeleportLeftHand;
             LeftTeleportRayXRController.gameObject.SetActive(EnableLeftTeleport && CheckIfActivated(LeftTeleportRayXRController) && !isLeftInteractorRayHovering && EnableTeleport && EnableTeleportLeftHand);
@@ -51,7 +51,7 @@ public class TeleportationController : MonoBehaviour
         if (RightTeleportRayXRController)
         {
             bool isRightInteractorRayHovering =
-                rightInteractorRay.TryGetHitInfo(ref pos, ref norm, ref index, ref validTarget);
+                rightInteractorRay.TryGetHitInfo(out pos, out norm, out index, out validTarget);
             _rightTeleportRayInteractor.allowSelect = CheckIfActivated(RightTeleportRayXRController) && !isRightInteractorRayHovering && EnableTeleport && EnableTeleportRightHand;
             RightTeleportRayXRController.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(RightTeleportRayXRController) && !isRightInteractorRayHovering && EnableTeleport && EnableTeleportRightHand);
         }
