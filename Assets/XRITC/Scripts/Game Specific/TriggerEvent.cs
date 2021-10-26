@@ -19,7 +19,10 @@ public class TriggerEvent  : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<MeshRenderer>().enabled = !disableMeshRendererAtRuntime;
+        if (GetComponent<MeshRenderer>())
+        {
+            GetComponent<MeshRenderer>().enabled = !disableMeshRendererAtRuntime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

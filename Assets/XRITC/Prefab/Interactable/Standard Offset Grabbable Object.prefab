@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5575349897003139697}
   - component: {fileID: 5575349897003139702}
   - component: {fileID: 5575349897003139703}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SphereMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,8 +105,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5575349898011492042}
   - component: {fileID: 5575349898011492043}
-  - component: {fileID: 5575349898011492040}
-  m_Layer: 0
+  - component: {fileID: 4823957185063173224}
+  - component: {fileID: 7374160713055877497}
+  m_Layer: 7
   m_Name: Standard Offset Grabbable Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +145,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5575349898011492040
+--- !u!114 &4823957185063173224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,31 +154,75 @@ MonoBehaviour:
   m_GameObject: {fileID: 5575349898011492041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e64a6438334b8943830fc1c3371dbf2, type: 3}
+  m_Script: {fileID: 11500000, guid: ad579c6ebe8c9c5408f9a324d8d8377f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowOffsetGrabRotation: 1
+  allowOffsetGrabPosition: 1
+  noColliderLayerName: NoPlayerCollide
+  manager: {fileID: 0}
+  controller: {fileID: 0}
+--- !u!114 &7374160713055877497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575349898011492041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6511dbee8d31bd47a5f47d5c6308992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders:
-  - {fileID: 5575349897003139703}
+  m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_OnFirstHoverEnter:
+  m_CustomReticle: {fileID: 0}
+  m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-  m_OnHoverEnter:
+  m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-  m_OnHoverExit:
+  m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-  m_OnLastHoverExit:
+  m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-  m_OnSelectEnter:
+  m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-  m_OnSelectExit:
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
   m_OnActivate:
@@ -186,10 +231,9 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_CustomReticle: {fileID: 0}
   m_AttachTransform: {fileID: 0}
   m_AttachEaseInTime: 0.15
-  m_MovementType: 1
+  m_MovementType: 0
   m_TrackPosition: 1
   m_SmoothPosition: 0
   m_SmoothPositionAmount: 5
@@ -216,9 +260,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_ThrowVelocityScale: 1.5
-  m_ThrowAngularVelocityScale: 0.25
-  m_GravityOnDetach: 0
+  m_ThrowAngularVelocityScale: 1
+  m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
+  allowRotationOffset: 0
+  allowPositionOffset: 0
 --- !u!1 &5575349898193031506
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5575349898193031501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,43 +1,45 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class SnapTurnController : MonoBehaviour
+namespace XRITC.Scripts.Locomotion
 {
-    public DeviceBasedSnapTurnProvider snapTurnProvider;
-
-    public bool SnapTurnIsOn = true;
-    [Tooltip("The higher this is the faster it rotates")]
-    public float newTurnAmount = 2.75f;
-
-    [SerializeField]
-    private float _originalTurnAmount = 45f;
-
-    [SerializeField]
-    private float _originalActivationTimeout = .2f;
-
-
-
-    void Start()
+    public class SnapTurnController : MonoBehaviour
     {
-        SetSnapTurnActivation(SnapTurnIsOn);
-    }
-    public bool SetSnapTurnActivation(bool snap)
-    {
-        SnapTurnIsOn = snap;
-        if (SnapTurnIsOn)
-        {
-            snapTurnProvider.turnAmount = _originalTurnAmount;
-            snapTurnProvider.debounceTime = _originalActivationTimeout;
+        public DeviceBasedSnapTurnProvider snapTurnProvider;
+        public DeviceBasedContinuousTurnProvider continuousTurnProvider;
 
-        }
-        else
-        {
-            snapTurnProvider.turnAmount = newTurnAmount;
-            snapTurnProvider.debounceTime = 0;
-        }
+        public bool SnapTurnIsOn = true;
+        [Tooltip("The higher this is the faster it rotates")]
+        public float newTurnAmount = 2.75f;
 
-        return SnapTurnIsOn;
+        [SerializeField]
+        private float _originalTurnAmount = 45f;
+
+        [SerializeField]
+        private float _originalActivationTimeout = .2f;
+
+
+
+        void Start()
+        {
+            SetSnapTurnActivation(SnapTurnIsOn);
+        }
+        public bool SetSnapTurnActivation(bool snap)
+        {
+            SnapTurnIsOn = snap;
+            if (SnapTurnIsOn)
+            {
+                snapTurnProvider.enabled = true;
+                continuousTurnProvider.enabled = false;
+
+            }
+            else
+            {
+                snapTurnProvider.enabled = false;
+                continuousTurnProvider.enabled = true;
+            }
+
+            return SnapTurnIsOn;
+        }
     }
 }

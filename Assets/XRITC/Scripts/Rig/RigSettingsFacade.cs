@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
+using XRITC.Scripts.Locomotion;
 
 namespace Assets.Scripts
 {

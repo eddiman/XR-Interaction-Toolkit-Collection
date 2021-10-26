@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - 3DLine
+  - 2DLine
   layers:
   - Default
   - TransparentFX
@@ -11,16 +13,16 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
   - Teleportable
-  - Grabbable
+  - DistanceGrababble
   - Player
+  - Drawable
+  - NoPlayerCollide
   - Grab Ignore Ray
   - SecondHandGrabbable
-  - SnapZone
-  - 
-  - 
+  - FadeLayer
+  - InteractableIsBeingHeld
+  - HandInteractors
   - 
   - 
   - 

@@ -44,6 +44,11 @@ public class LerpShaderValue : MonoBehaviour
         }
         LerpOut();
     }
+
+    public void SetShaderFloatValue(float value)
+    {
+        meshRenderer.material.SetFloat(ShaderValueName, value);
+    }
     public void LerpIn()
     {
         if(!isActiveAndEnabled) return;

@@ -1,28 +1,32 @@
 ﻿using UnityEngine.XR.Interaction.Toolkit;
 
-public class ClimbInteractable : XRBaseInteractable
+namespace Assets.XRITC.Scripts.Interactables
 {
-    protected override void OnSelectEntered(XRBaseInteractor interactor)
+    public class ClimbInteractable : XRBaseInteractable
     {
-        base.OnSelectEntered(interactor);
-
-        if (interactor is XRDirectInteractor)
+        protected override void OnSelectEntered(XRBaseInteractor interactor)
         {
-            Climber.ClimbingHand = interactor.GetComponent<XRController>();
+            base.OnSelectEntered(interactor);
 
-        }
-    }
-
-    protected override void OnSelectExited(XRBaseInteractor interactor)
-    {
-        base.OnSelectExited(interactor);
-        if (interactor is XRDirectInteractor)
-        {
-            if (Climber.ClimbingHand && Climber.ClimbingHand.name == interactor.name)
+            if (interactor is XRDirectInteractor)
             {
-                Climber.ClimbingHand = null;
+                Climber.ClimbingHand = interactor.GetComponent<XRController>();
+
             }
         }
-    }
 
+        protected override void OnSelectExited(XRBaseInteractor interactor)
+        {
+            base.OnSelectExited(interactor);
+
+            if (interactor is XRDirectInteractor)
+            {
+                if (Climber.ClimbingHand && Climber.ClimbingHand.name == interactor.name)
+                {
+                    Climber.ClimbingHand = null;
+                }
+            }
+        }
+
+    }
 }

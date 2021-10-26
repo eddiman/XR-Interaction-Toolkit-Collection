@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
+using XRITC.Scripts.Locomotion;
 
 
 public class MenuController : MonoBehaviour
@@ -15,6 +16,8 @@ public class MenuController : MonoBehaviour
 
     //This is VR Camera
     public XRRig Rig;
+       public GameObject XRControllerObject;
+
 
     public UnityEvent menuOpen;
 
@@ -37,9 +40,9 @@ public class MenuController : MonoBehaviour
 
     private void setToggles()
     {
-        _teleportToggle.SetIsOnWithoutNotify(Rig.GetComponent<TeleportationController>().EnableTeleport);
-        _contMovementToggle.SetIsOnWithoutNotify(Rig.GetComponent<ContinuousMovement>().enableContinuousMovement);
-        _snapTurnToggle.SetIsOnWithoutNotify(Rig.GetComponent<SnapTurnController>().SnapTurnIsOn);
+        _teleportToggle.SetIsOnWithoutNotify(XRControllerObject.GetComponent<TeleportationController>().EnableTeleport);
+        _contMovementToggle.SetIsOnWithoutNotify(XRControllerObject.GetComponent<ContinuousMovement>().enableContinuousMovement);
+        _snapTurnToggle.SetIsOnWithoutNotify(XRControllerObject.GetComponent<SnapTurnController>().SnapTurnIsOn);
     }
     public void toggleMenu()
     {

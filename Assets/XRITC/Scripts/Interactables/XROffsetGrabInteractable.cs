@@ -1,38 +1,73 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class XROffsetGrabInteractable : XRGrabInteractable
+namespace XRITC.Scripts.Interactables
 {
-    [Header("Remember to set Collider from the child in 'Mesh' to Attach Transform/Colliders")]
-    private Vector3 _initialAttachLocalPos;
-    private Quaternion _initialAttachLocalRot;
-    private void Start()
+    public class XROffsetGrabInteractable : XRGrabInteractable
     {
-        //Create attach point if not exists
-        if (!attachTransform)
+        private Vector3 _interactorPosition = Vector3.zero;
+        private Quaternion _interactorRotation = Quaternion.identity;
+        private LayerMask _originalLayer;
+        private string noColliderLayerName = "NoPlayerCollide";
+        
+        protected override void OnSelectEntered(SelectEnterEventArgs args)
         {
-            GameObject grab = new GameObject("Grab Pivot");
-            grab.transform.SetParent(transform,false);
-            attachTransform = grab.transform;
+            var interactor = args.interactor;
+            //Remember to set "NoPlayerCollide" layer to no collide in physics matrix Project Settings > Physics
+            //Checks if layer exists, and then sets GO and colliders in XRGrabInteractable to not collide with player
+            _originalLayer = gameObject.layer;
+            if (LayerMask.NameToLayer(noColliderLayerName) > -1)
+            {
+                gameObject.layer = LayerMask.NameToLayer(noColliderLayerName);
+                foreach (var child in colliders)
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer(noColliderLayerName);
+                }
+            }
+
+            base.OnSelectEntered(args);
+            StoreInteractor(interactor);
+            MatchAttachmentPoints(interactor);
         }
 
-        _initialAttachLocalPos = attachTransform.localPosition;
-        _initialAttachLocalRot = attachTransform.localRotation;
-    }
-    protected override void OnSelectEntered(XRBaseInteractor interactor)
-    {
-        if (interactor is XRDirectInteractor)
+        private void StoreInteractor(XRBaseInteractor interactor)
         {
-            attachTransform.position = interactor.transform.position;
-            attachTransform.rotation = interactor.transform.rotation;
+            _interactorPosition = interactor.attachTransform.localPosition;
+            _interactorRotation = interactor.attachTransform.localRotation;
         }
-        else
+
+        private void MatchAttachmentPoints(XRBaseInteractor interactor)
         {
-            attachTransform.localPosition = _initialAttachLocalPos;
-            attachTransform.localRotation = _initialAttachLocalRot;
+  
+            bool hasAttach = attachTransform != null;
+            interactor.attachTransform.position = hasAttach ? attachTransform.position : transform.position;
+            interactor.attachTransform.rotation = hasAttach ? attachTransform.rotation : transform.rotation;
         }
-        base.OnSelectEntered(interactor);
+        protected override void OnSelectExited(SelectExitEventArgs args)
+        {
+            var interactor = args.interactor;
+            gameObject.layer = _originalLayer;
+            foreach (var child in colliders)
+            {
+                child.gameObject.layer = _originalLayer;
+            }
+
+            base.OnSelectExited(args);
+            ClearInteractor();
+            ResetAttachmentPoint(interactor);
+        }
+
+        private void ResetAttachmentPoint(XRBaseInteractor interactor)
+        {
+            interactor.attachTransform.transform.localPosition = _interactorPosition;
+            interactor.attachTransform.transform.localRotation = _interactorRotation;
+        }
+
+        private void ClearInteractor()
+        {
+            _interactorPosition = Vector3.zero;
+            _interactorRotation = Quaternion.identity;
+        }
+
     }
 }

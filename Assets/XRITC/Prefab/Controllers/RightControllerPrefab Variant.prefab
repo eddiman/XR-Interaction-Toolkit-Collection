@@ -12,6 +12,10 @@ PrefabInstance:
       value: RightControllerPrefab Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2964851383828405729, guid: 33f8794838d40794788b7998348436d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2964851383828405729, guid: 33f8794838d40794788b7998348436d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.8653035
       objectReference: {fileID: 0}
@@ -24,6 +28,10 @@ PrefabInstance:
       value: 0.69063264
       objectReference: {fileID: 0}
     - target: {fileID: 2964851383828405729, guid: 33f8794838d40794788b7998348436d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2964851383828405729, guid: 33f8794838d40794788b7998348436d0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -33,14 +41,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2964851383828405729, guid: 33f8794838d40794788b7998348436d0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2964851383828405729, guid: 33f8794838d40794788b7998348436d0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2964851383828405729, guid: 33f8794838d40794788b7998348436d0, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2964851383828405729, guid: 33f8794838d40794788b7998348436d0, type: 3}
@@ -56,16 +56,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2964851383828405734, guid: 33f8794838d40794788b7998348436d0, type: 3}
-      propertyPath: deviceCharacteristics
-      value: 576
-      objectReference: {fileID: 0}
+      propertyPath: HandModelPrefab
+      value: 
+      objectReference: {fileID: 5686134208185362930, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
     - target: {fileID: 2964851383828405734, guid: 33f8794838d40794788b7998348436d0, type: 3}
       propertyPath: DeviceCharacteristics
       value: 576
       objectReference: {fileID: 0}
     - target: {fileID: 2964851383828405734, guid: 33f8794838d40794788b7998348436d0, type: 3}
-      propertyPath: HandModelPrefab
-      value: 
-      objectReference: {fileID: 5686134208185362930, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
+      propertyPath: deviceCharacteristics
+      value: 576
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33f8794838d40794788b7998348436d0, type: 3}

@@ -121,26 +121,37 @@ public class HandPresence : MonoBehaviour
  */
     private void AddDevice(InputDevice obj)
     {
-        //Refresh the device list once more due, for when the delegate InputDevice.deviceConnected fires
-        InputDevices.GetDevicesWithCharacteristics(DeviceCharacteristics, _devices);
-        _targetDevice = _devices[0];
-        GameObject prefab = ControllerPrefabs.Find(controller => controller.name == _targetDevice.name);
-
-        if (prefab)
+        Debug.Log(_devices.Count);
+        try
         {
-            _spawnedController = Instantiate(prefab, transform);
+            //Refresh the device list once more due, for when the delegate InputDevice.deviceConnected fires
+            InputDevices.GetDevicesWithCharacteristics(DeviceCharacteristics, _devices);
+            if (_devices.Count <= 0) return;
+            _targetDevice = _devices[0];
+            GameObject prefab = ControllerPrefabs.Find(controller => controller.name == _targetDevice.name);
+
+            if (prefab)
+            {
+                _spawnedController = Instantiate(prefab, transform);
+            }
+            else
+            {
+                Debug.Log("Did not find controller");
+                _spawnedController = Instantiate(ControllerPrefabs[0], transform);
+            }
+
+            _spawnedHandModel = Instantiate(HandModelPrefab, transform);
+
+            _handAnimator = _spawnedHandModel.GetComponent<Animator>();
+            ShowControllerActivated(showController);
+            InputDevices.deviceConnected -= AddDevice;
         }
-        else
+        catch (Exception e)
         {
-            Debug.Log("Did not find controller");
-            _spawnedController = Instantiate(ControllerPrefabs[0], transform);
+            //TODO: This under
+            Debug.LogWarning("TODO: Find out this Index Out of Bounds is, doesnt affect any fuinctionalty tho");
+            throw;
         }
-
-        _spawnedHandModel = Instantiate(HandModelPrefab, transform);
-
-        _handAnimator = _spawnedHandModel.GetComponent<Animator>();
-        ShowControllerActivated(showController);
-        InputDevices.deviceConnected -= AddDevice;
     }
 
     private void storeLastPosition()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,23 +13,23 @@ public class ContinuousMovement : MonoBehaviour
     public float speed = 1;
     public float gravity = -9.81f;
     public XRNode InputSource;
+    public bool _isGrounded = false;
     public LayerMask groundLayer;
     public float additionalHeight = 0.2f; //20cm
     public bool enableContinuousMovement = true;
+    public XRRig XrRig;
 
-        public float FOVRestrictorThreshold = 0.1f; //How much of the stick before the fov restrictor is activated
+    public float FOVRestrictorThreshold = 0.1f; //How much of the stick before the fov restrictor is activated
 
 
     public UnityEvent StartedMoving;
     public UnityEvent StoppedMoving;
 
-    private bool _isGrounded = true;
     private bool _isMoving = false;
 
 
     private Vector2 _inputAxis;
     private float _fallingSpeed;
-    private XRRig _rig;
 
     //Layer on this object has to be "Player"
     private CharacterController _character;
@@ -36,7 +37,6 @@ public class ContinuousMovement : MonoBehaviour
     void Start()
     {
         _character = GetComponent<CharacterController>();
-        _rig = GetComponent<XRRig>();
         _isGrounded = CheckIfGrounded();
     }
 
@@ -51,11 +51,20 @@ public class ContinuousMovement : MonoBehaviour
     void FixedUpdate()
     {
         CapsuleFollowHeadSet();
-        Quaternion headYaw = Quaternion.Euler(0, _rig.cameraGameObject.transform.eulerAngles.y, 0);
-        Vector3 direction = headYaw * new Vector3(_inputAxis.x, 0, _inputAxis.y);
+        Quaternion headYaw = Quaternion.Euler(0, XrRig.cameraGameObject.transform.eulerAngles.y, 0);
         if (enableContinuousMovement)
         {
-            _character.Move(direction * Time.deltaTime * speed);
+            _isGrounded = CheckIfGrounded();
+
+            if (_isGrounded)
+            { _fallingSpeed = 0; }
+            else
+            {
+                _fallingSpeed += gravity * Time.fixedDeltaTime;
+            }
+            Vector3 direction = headYaw * new Vector3(_inputAxis.x, _fallingSpeed, _inputAxis.y);
+
+            _character.Move(direction * Time.fixedDeltaTime * speed);
             if(Math.Abs(_inputAxis.y) > FOVRestrictorThreshold && _isMoving == false)
             {
                 _isMoving = true;
@@ -65,27 +74,14 @@ public class ContinuousMovement : MonoBehaviour
                 _isMoving = true;
                 StartedMoving.Invoke();
             } else if (Math.Abs(_inputAxis.x) < FOVRestrictorThreshold
-                && Math.Abs(_inputAxis.y) < FOVRestrictorThreshold
-                && _isMoving)
+                       && Math.Abs(_inputAxis.y) < FOVRestrictorThreshold
+                       && _isMoving)
             {
                 _isMoving = false;
                 StoppedMoving.Invoke();
             }
         }
 
-        //Gravity
-        _isGrounded = CheckIfGrounded();
-        if (_isGrounded)
-        {
-            _fallingSpeed = 0;
-        }
-        else
-        {
-
-            _fallingSpeed += gravity * Time.fixedDeltaTime;
-        }
-
-        _character.Move(Vector3.up * _fallingSpeed * Time.fixedDeltaTime);
 
     }
     public bool SetContinuousMovementActivation(bool value)
@@ -100,19 +96,21 @@ public class ContinuousMovement : MonoBehaviour
         return enableContinuousMovement;
     }
 
+
     private void CapsuleFollowHeadSet()
     {
-        _character.height = _rig.cameraInRigSpaceHeight + additionalHeight;
-        Vector3 capsuleCenter = transform.InverseTransformPoint(_rig.cameraGameObject.transform.position);
+        _character.height = XrRig.cameraInRigSpaceHeight + additionalHeight;
+        Vector3 capsuleCenter = transform.InverseTransformPoint(XrRig.cameraGameObject.transform.position);
         _character.center = new Vector3(capsuleCenter.x, _character.height/2 + _character.skinWidth, capsuleCenter.z);
     }
     private bool CheckIfGrounded()
     {
         Vector3 rayStart = transform.TransformPoint(_character.center);
-        float rayLength = _character.center.y + 0.01f;
+        float rayLength = _character.center.y + 0.001f;
 
         bool hasHit = Physics.SphereCast(rayStart, _character.radius, Vector3.down, out RaycastHit hitInfo, rayLength,
             groundLayer);
         return hasHit;
     }
+
 }
