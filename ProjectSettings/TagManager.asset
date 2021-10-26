@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - 3DLine
+  - 2DLine
   layers:
   - Default
   - TransparentFX
@@ -11,16 +13,16 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
   - Teleportable
-  - Grabbable
+  - DistanceGrababble
   - Player
+  - Drawable
+  - NoPlayerCollide
   - Grab Ignore Ray
   - SecondHandGrabbable
-  - SnapZone
-  - 
-  - 
+  - FadeLayer
+  - InteractableIsBeingHeld
+  - HandInteractors
   - 
   - 
   - 
@@ -40,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: On Top
+    uniqueID: 4060980031
     locked: 0
